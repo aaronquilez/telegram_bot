@@ -9,7 +9,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from subprocess import CREATE_NO_WINDOW
+
 
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 LOGIN_URL = os.environ.get('LOGIN_URL')
