@@ -1,6 +1,6 @@
 import logging
 import os
-from dotenv improt load_dotenv
+from dotenv import load_dotenv
 from datetime import date
 import time
 
