@@ -1,16 +1,17 @@
 import logging
 import os
+from dotenv improt load_dotenv
 from datetime import date
 import time
 
-from uuid import uuid4 
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-
+load_dotenv(os.path.join('.env'))
+            
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 LOGIN_URL = os.environ.get('LOGIN_URL')
 
