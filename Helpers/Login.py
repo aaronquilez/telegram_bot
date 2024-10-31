@@ -1,7 +1,6 @@
 
 from Constants.Env import LOGIN_URL
 
-from datetime import date
 import time
 
 from selenium import webdriver
@@ -12,9 +11,7 @@ from selenium.webdriver.chrome.options import Options
 class Login:
    
 
-    def login_to_webpage(username: str, password: str) -> str:
-
-        today = date.today().strftime("%d-%m-%Y") 
+    def login_to_webpage(username: str, password: str, day: str) -> str:
 
         chrome_options = Options()
         chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -23,10 +20,11 @@ class Login:
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--windows-size=0,0")
         driver = webdriver.Chrome(options=chrome_options)
+        #driver = webdriver.Chrome()
 
         driver.get(LOGIN_URL)
 
-        time.sleep(3)
+        time.sleep(5)
         driver.find_element(By.ID, 'data.email').send_keys(username)
         driver.find_element(By.ID, 'data.password').send_keys(password)
 
@@ -43,7 +41,7 @@ class Login:
                 dies[key] = detall
 
             driver.quit()
-            return (dies[today])
+            return (dies[day])
         except:
             return ("No s'ha registrat correctament")
 

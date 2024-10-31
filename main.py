@@ -14,6 +14,7 @@ def main() -> None:
     bressol_kp_bot.application.add_handlers([
         CommandHandler("start", UserController.start),
         CommandHandler("sendme", UserController.sendme),
+        CommandHandler("yesterday", UserController.yesterday),
         MessageHandler(filters.TEXT & ~filters.COMMAND, UserController.handle_message),
     ])
 
