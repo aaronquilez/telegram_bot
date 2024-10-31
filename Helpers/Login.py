@@ -6,6 +6,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 
 
 class Login:
@@ -19,8 +20,8 @@ class Login:
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--windows-size=0,0")
+        
         driver = webdriver.Chrome(options=chrome_options)
-        #driver = webdriver.Chrome()
 
         driver.get(LOGIN_URL)
 

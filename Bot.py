@@ -2,7 +2,7 @@ import logging
 from telegram import Update
 from telegram.ext import Application
 
-
+from Models.User import User
 from Constants.Env import BOT_TOKEN
 
 class Bot:
@@ -11,8 +11,16 @@ class Bot:
     logger: logging.Logger
 
     def __init__(self):
-        self.set_logger()
+        self.config()
         self.application = Application.builder().token(BOT_TOKEN).build()
+
+
+    def config(self):
+        self.initDB()
+        self.set_logger()
+    
+    def initDB(self):
+        User.create_table()
 
 
     def set_logger(self):
