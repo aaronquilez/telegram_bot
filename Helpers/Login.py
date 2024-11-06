@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.remote.file_detector import LocalFileDetector
 
 
 class Login:
@@ -21,7 +22,8 @@ class Login:
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--windows-size=0,0")
         
-        driver = webdriver.Chrome(options=chrome_options)
+        driver = webdriver.Remote(command_executor='http://127.0.0.1:4444', options=chrome_options)
+        #driver = webdriver.Chrome(options=chrome_options)
 
         driver.get(LOGIN_URL)
 
