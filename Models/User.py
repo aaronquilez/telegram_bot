@@ -1,4 +1,5 @@
 from Models.DBConnection import db, connection
+from datetime import datetime
 
 class User:
     
@@ -16,8 +17,8 @@ class User:
     
     def create_user(name: str, indentifier: str, telegram_id: int):
         db.execute("""--sql
-                   INSERT INTO "User" (name, identifier, user_id, created_at)
-                   VALUES (?, ?, ?, datetime(now));
+                   INSERT INTO "User" (name, identifier, user_id)
+                   VALUES (?, ?, ?);
                    """,
                    (name, indentifier, telegram_id))
         connection.commit()
@@ -29,6 +30,12 @@ class User:
     def findByPk(id: int):
         result = db.execute("SELECT * FROM 'User' WHERE id = ?",(id,)).fetchone()
         return result[0]
+
+
+    def get_user_by_telegram_id(telegram_id: int):
+        result = db.execute("""SELECT id, name, identifier FROM 'User' WHERE user_id = ?;""", (telegram_id,)).fetchone()
+        return result
+
 
     def get_all_users_by_telegram_id(telegram_id: int) -> list[tuple[str]]:
         result: list = db.execute("""SELECT id, name, identifier FROM 'User' WHERE user_id = ?;""", (telegram_id,)).fetchall()

@@ -23,7 +23,7 @@ class Login:
         chrome_options.add_argument("--windows-size=0,0")
         
         driver = webdriver.Remote(command_executor='http://127.0.0.1:4444', options=chrome_options)
-        #driver = webdriver.Chrome(options=chrome_options)
+        #driver = webdriver.Remote(command_executor='http://192.168.1.10:4444', options=chrome_options)
 
         driver.get(LOGIN_URL)
 

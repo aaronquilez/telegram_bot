@@ -21,6 +21,7 @@ class Bot:
     
     def initDB(self):
         User.create_table()
+        print("Table User created!")
 
 
     def set_logger(self):
