@@ -13,7 +13,7 @@ from selenium.webdriver.remote.file_detector import LocalFileDetector
 class Login:
    
 
-    def login_to_webpage(username: str, password: str, day: str) -> str:
+    def login_to_webpage(username: str, password: str) -> str:
 
         chrome_options = Options()
         chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -22,8 +22,8 @@ class Login:
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--windows-size=0,0")
         
-        driver = webdriver.Remote(command_executor='http://127.0.0.1:4444', options=chrome_options)
-        #driver = webdriver.Remote(command_executor='http://192.168.1.10:4444', options=chrome_options)
+        #driver = webdriver.Remote(command_executor='http://127.0.0.1:4444', options=chrome_options)
+        driver = webdriver.Remote(command_executor='http://192.168.1.10:4444', options=chrome_options)
 
         driver.get(LOGIN_URL)
 
@@ -44,7 +44,9 @@ class Login:
                 dies[key] = detall
 
             driver.quit()
-            return (dies[day])
+
+            #print(dies)
+            return (dies)
         except:
             return ("No s'ha registrat correctament")
 
