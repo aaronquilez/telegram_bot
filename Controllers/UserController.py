@@ -18,10 +18,9 @@ class UserController:
     async def sendme(update, context: ContextTypes.DEFAULT_TYPE) -> None:
         print("Command send: Sendme")
         print("Chat id: " + str(update.effective_chat.id))
+        
         day = date.today().strftime("%d-%m-%Y") 
-
         user = User.get_user_by_telegram_id(update.effective_chat.id)     
-        print(user)
         
         if user:   
             response = Login.login_to_webpage(user[1], user[2])
@@ -33,7 +32,8 @@ class UserController:
 
     async def yesterday(update, context: ContextTypes.DEFAULT_TYPE) -> None:
         print("Command send: Yesteday")
-        print("Chat id: " + update.effective_chat.id)
+        print("Chat id: " + str(update.effective_chat.id))
+        
         day = (date.today() - timedelta(days = 1)).strftime("%d-%m-%Y") 
         user = User.get_user_by_telegram_id(update.effective_chat.id)
         
